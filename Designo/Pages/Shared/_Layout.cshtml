@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Designo</title>
+    <link href="~/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <nav class="bg-white relative md:w-[85%] md:mx-auto">
+            <div class="px-[24px] md:px-0">
+                <div class="flex justify-between py-[35px] h-[96px] mx-auto">
+                    <div class="flex justify-between w-full">
+                        <a asp-page="/index"><img src="~/assets/shared/desktop/logo-dark.png" alt="Logo" class="h-[27px] w-[202px] self-center"></a>
+                        @*Primary Navbar items*@
+                        <div class="hidden md:flex items-center space-x-[42px]">
+                            <a class="text-[14px] font-normal font-[400] leading-[14px] tracking-[2px]">OUR COMPANY</a>
+                            <a class="text-[14px] font-normal font-[400] leading-[14px] tracking-[2px]">LOCATIONS</a>
+                            <a class="text-[14px] font-normal font-[400] leading-[14px] tracking-[2px]">CONTACT</a>
+                        </div>
+                    </div>
+
+                    @*Mobile menu button*@
+                    <div class="md:hidden flex items-center" id="hamburger">
+                        <img src="~/assets/shared/mobile/icon-hamburger.svg" />
+                    </div>
+                </div>
+            </div>
+            @*mobile menu*@
+            <div class="hidden mobile-menu absolute w-full h-screen bg-[#1D1C1E] bg-opacity-[0.5]">
+                <ul class="h-[327px] bg-[#1D1C1E] z-10 space-x-[24px]">
+                    <li class="ml-[24px] pt-[48px]"><a class="text-2xl text-white">OUR COMPANY</a></li>
+                    <li class="my-[48px]"><a class="text-2xl text-white">LOCATIONS</a></li>
+                    <li><a class="text-2xl text-white">CONTACT</a></li>
+                </ul>
+            </div>
+            <script>
+                const btn = document.querySelector("#hamburger");
+                const menu = document.querySelector(".mobile-menu");
+
+                btn.addEventListener("click", () => {
+                    if (menu.classList.contains("hidden")) {
+                        menu.classList.remove("hidden");
+                        btn.innerHTML = "<img id=\"hamburger\" src=\"/assets/shared/mobile/icon-close.svg\" />";
+                    } else {
+                        menu.classList.add("hidden");
+                        btn.innerHTML = "<img id=\"hamburger\" src=\"/assets/shared/mobile/icon-hamburger.svg\" />";
+                    }
+                });
+            </script>
+        </nav>
+    </header>
+
+
+    <div>
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="w-full overflow-hidden">
+        <div class=" flex items-center justify-center -mb-[163px] md:w-[85%] md:mx-auto rounded-[15px]">
+            <div class="lg:flex lg:justify-between text-white text-center py-[64px]  bg-[#E7816B] px-[24px] lg:px-[96px] lg:mx-0 w-full mx-[24px] md:mx-0 rounded-[15px] lg:text-left lg:h-full" style="background-image: url('/assets/shared/desktop/bg-pattern-call-to-action.svg'); background-repeat:no-repeat; background-size: cover">
+                <div class="lg:w-[50%]">
+                    <p class="text-[32px] font-medium leading-9 lg:w-[268px]">
+                        Let’s talk about your project
+                    </p>
+                    <p class="mb-[32px] mt-[3px] text-[14px] font-[400] md:w-[400px] lg:w-full md:mx-auto md:leading-[26px] md:mt-[15px]">
+                        Ready to take it to the next level? Contact us today and find out how our expertise can help your business grow.
+                    </p>
+                </div>
+                <div class="lg:w-[50%] lg:flex lg:justify-between lg:items-center">
+                    <button class="text[15px] h-[56px] w-[152px]  font-normal font-[500px] uppercase rounded-[8px] bg-white lg:bg-[#FFAD9B] py-[17px] px-[18px] text-[#1D1C1E] lg:text-white lg:ml-auto">GET IN TOUCH</button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#1D1C1E] border-2 border-[#1D1C1E]">
+            <div class="md:w-[85%] md:mx-auto">
+                <div class="md:flex mt-[253px] md:justify-between">
+                    <div class="">
+                        <div class="flex justify-center align-center"><img src="~/assets/shared/desktop/logo-light.png" class="h-[27px] w-[197px] " /></div>
+                    </div>
+                    <div class="md:hidden px-[24px] bg-white h-[1px] bg-opacity-[0.10] my-[32px]"></div>
+                    <ul class="text-white text-center md:flex md:space-x-[42px]">
+                        <li class="mt-[32px] md:mt-0"><a class="tracking-[2px] font-[400] text-[14px]">OUR COMPANY</a></li>
+                        <li class="my-[32px] md:mt-0"><a class="tracking-[2px] font-[400] text-[14px]">LOCATIONS</a></li>
+                        <li class="mb-[32px] "><a class="tracking-[2px] font-[400] text-[14px]">CONTACT</a></li>
+                    </ul>
+                </div>
+
+                <div class="hidden md:block px-[39px] bg-white h-[1px] bg-opacity-[0.10] my-[40px]"></div>
+
+                <div class="text-white/50 md:flex justify-between md:mb-[80px]">
+                    <div class="mt-[40px] text-center md:text-left md:mt-0">
+                        <h3 class="font-bold leading-[26px]">Designo Central Office</h3>
+                        <p class="leading-[26px]">
+                            3886 Wellington Street <br />
+                            Toronto, Ontario M9C 3J5
+                        </p>
+
+                    </div>
+
+                    <div class="mt-[40px] text-center md:text-left md:mt-0">
+                        <h3 class="font-bold leading-[26px]">Contact Us (Central Office)</h3>
+                        <p class="leading-[26px] md:font-bold">
+                            P : +1 253-863-8967 <br />
+                            M : contact@designo.co
+                        </p>
+                    </div>
+
+                    <div class="flex mt-[40px] mb-[64px] justify-center space-x-3 md:mt-0 md:mb-0 md:self-end">
+                        <a><img src="~/assets/shared/desktop/icon-facebook.svg" /></a>
+                        <a><img src="~/assets/shared/desktop/icon-youtube.svg" /></a>
+                        <a><img src="~/assets/shared/desktop/icon-twitter.svg" /></a>
+                        <a><img src="~/assets/shared/desktop/icon-pinterest.svg" /></a>
+                        <a><img src="~/assets/shared/desktop/icon-instagram.svg" /></a>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

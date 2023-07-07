@@ -1,0 +1,75 @@
+﻿@page
+@model Designo.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Services |";
+
+    string pageId = Model.Id!;
+    string imageFolderPath = Model.Id switch
+    {
+        "app" => "app-design",
+        "web" => "web-design",
+        "graphic" => "graphic-design",
+        _ => "graphic-design"
+    };
+
+}
+
+<div>
+    @{
+        string title = Model.PageHeaderInfo[pageId]["title"];
+        string subTitle = Model.PageHeaderInfo[pageId]["subTitle"];
+
+    }
+    @*page header*@
+    <section class="w-full md:w-[85%] md:mx-auto md:rounded-[15px] md:overflow-hidden">
+        <div class="h-[320px] bg-[#E7816B] px-[24px] flex items-center justify-center" style="background-image: url('/assets/home/desktop/bg-pattern-hero-home.svg'); background-repeat:no-repeat; background-size: cover">
+            <div class="text-center text-white">
+                <h1 class=" text-[32px] leading-[36x] font-[500] font-normal md:text-[48px] md:leading-[48px] ">@title</h1>
+                <p class="mt-[15px] text-[15px] text-normal font-[400] leading-[25px] md:text-[15px] md:leading-25px]">@subTitle</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-[85%] mx-auto mt-[96px]">
+        @*Service details*@
+        <div class="lg:grid lg:grid-cols-3 lg:gap-[30px] lg:h-auto">
+            @foreach (var serviceDetails in Model.CurrentServiceDetails!)
+            {
+                <div class="w-full">
+                    <div class="rounded-[15px] mb-[40px] md:mb-[38px] lg:mb-[32px] overflow-hidden md:flex lg:flex-col">
+                        <img class="h-[320px] w-full md:h-[310px] md:w-[50%] lg:w-full lg:h-[340px]" src="~/assets/@imageFolderPath/desktop/@serviceDetails["image"]" />
+                        <div class="p-[30px] bg-[#FDF3F0] md:self-center md:h-[310px] lg:h-[158px] md:w-[50%] lg:w-full md:flex md:items-center md:justify-center">
+                            <div>
+                                <h3 class="text-[#E7816B] font-[500] text-[20px] leading-[26px] tracking-[5px] text-center">@serviceDetails["heading"]</h3>
+                                <p class="mt-[16px] text-[16px] text-[#333136] font-[400] leading-[26px] text-center">@serviceDetails["content"]</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        @*Other services*@
+        <div class="mb-[102px] md:mt-[120px] lg:mt-[160px] lg:grid lg:grid-cols-2 lg:gap-[29px]">
+            @foreach (var serviceKey in Model.Services.Keys)
+            {
+                if (serviceKey != pageId)
+                {
+                    <div class="flex items-center justify-center h-[250px] md:h-[200px] lg:h-[308px] text-center rounded-[15px] text-white mb-[24px]" style="background-image: url('/assets/home/mobile/@Model.Services[serviceKey]["image"]'); background-repeat:no-repeat; background-size: cover">
+                        <div class="w-full">
+                            <a asp-page="/Services" asp-route-id="@Model.Services[serviceKey]["routeName"]">
+                                <h3 class="mb-[12px] leading-[36px] text-[28px] tracking-[1.4px]">@Model.Services[serviceKey]["name"]</h3>
+                                <p class="font-[500] text-[15px] uppercase tracking-[5px]">@Model.Services[serviceKey]["action"]<img src="~/assets/shared/desktop/icon-right-arrow.svg" class="ml-[5px] inline align-baseline" /></p>
+                            </a>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+
+    </section>
+
+</div>

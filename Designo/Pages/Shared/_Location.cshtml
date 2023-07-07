@@ -1,0 +1,13 @@
+﻿@model Dictionary<string, string>
+
+<div class="flex justify-center items-center mb-[48px] md:mb-[80px] ">
+    <div class="h-[364px]">
+        <div class="w-[202px] bg-[#F1F3F5] rounded-full">
+            <img class="w-full" src="~/assets/shared/desktop/@Model["image"]"  />
+        </div>
+        <h3 class="mt-[48px] mb-[32px] uppercase text-[#333136] tracking-[5px] text-center">@Model["country"]</h3>
+        <div class="flex justify-center items-center">
+            <button class="text-[15px] font-normal font-[500px] uppercase rounded-[8px] bg-[#E7816B] p-[18px] mx-auto text-white">SEE LOCATION</button>
+        </div>
+    </div>
+</div>
