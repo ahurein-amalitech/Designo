@@ -2,6 +2,10 @@
 @model Designo.Pages.ContactUsModel
 @{
     ViewData["Title"] = "Contact Us";
+
+    string message = (string)(TempData["Message"] ?? "");
+    bool showMessage = !string.IsNullOrEmpty(message);
+    TempData["Message"] = "";
 }
 <section class="w-full md:w-[85%] md:mx-auto md:rounded-[15px] md:overflow-hidden">
     <div class=" bg-[#E7816B] px-[24px] md:px-[58px] flex-col items-center justify-center lg:flex lg:flex-row lg:justify-between" style="background-image: url('/assets/home/desktop/bg-pattern-hero-home.svg'); background-repeat:no-repeat; background-size: cover">
@@ -11,20 +15,24 @@
         </div>
         <form method="post" class="space-y-[20px] pb-[50px] lg:w-[45%] lg:mt-[55px]">
             <div>
-                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="name" name="Name" placeholder="Name" required />
+                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="name" asp-for="Name" placeholder="Name"  />
                 <div class="w-full h-[1px] bg-white"></div>
+                <span asp-validation-for="Name" class="text-red-500"></span>
+            </div>
+            <div class="relative">
+                <input class="w-full leading-[38px] outline-none text-white bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="email" id="email" asp-for="Email" placeholder="Email Address"  />
+                <div class="w-full h-[1px] bg-white"></div>
+                <span asp-validation-for="Email" class="text-red-500"></span>
             </div>
             <div>
-                <input class="w-full leading-[38px] outline-none text-white bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="email" id="email" name="Email" placeholder="Email Address" required />
+                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="phone" asp-for="Phone" placeholder="Phone"  />
                 <div class="w-full h-[1px] bg-white"></div>
+                <span asp-validation-for="Phone" class="text-red-500"></span>
             </div>
             <div>
-                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="phone" name="Phone" placeholder="Phone" required />
+                <textarea class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" placeholder="Your Message" asp-for="Message" rows="3"></textarea>
                 <div class="w-full h-[1px] bg-white"></div>
-            </div>
-            <div>
-                <textarea class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" placeholder="Your Message" name="Message" rows="3"></textarea>
-                <div class="w-full h-[1px] bg-white"></div>
+                <span asp-validation-for="Message" class="text-red-500"></span>
             </div>
             <div class="flex justify-center items-center">
                 <button class="mt-[18px] md:mt-[19px] text-[15px] font-[500px] uppercase rounded-[8px] bg-white py-[18px] px-[48px] text-[##333136]">submit</button>
@@ -46,3 +54,12 @@
         </div>
     </div>
 </section>
+
+@if (showMessage)
+{
+    <script>
+        window.onload = function () {
+            alert('@message');
+        };
+    </script>
+}
