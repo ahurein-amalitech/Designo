@@ -1,0 +1,48 @@
+﻿@page
+@model Designo.Pages.ContactUsModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+<section class="w-full md:w-[85%] md:mx-auto md:rounded-[15px] md:overflow-hidden">
+    <div class=" bg-[#E7816B] px-[24px] md:px-[58px] flex-col items-center justify-center lg:flex lg:flex-row lg:justify-between" style="background-image: url('/assets/home/desktop/bg-pattern-hero-home.svg'); background-repeat:no-repeat; background-size: cover">
+        <div class="text-center text-white pt-[72px] mb-[48px] md:text-left lg:w-[45%]">
+            <h1 class=" text-[32px] leading-[36px] font-[500] font-normal md:text-[48px] md:leading-[48px] ">Contact Us</h1>
+            <p class="mt-[24px] md:mt-[32px] text-[15px] text-normal font-[400] leading-[25px] md:text-[15px] md:leading-25px]">Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line.</p>
+        </div>
+        <form method="post" class="space-y-[20px] pb-[50px] lg:w-[45%] lg:mt-[55px]">
+            <div>
+                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="name" name="Name" placeholder="Name" required />
+                <div class="w-full h-[1px] bg-white"></div>
+            </div>
+            <div>
+                <input class="w-full leading-[38px] outline-none text-white bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="email" id="email" name="Email" placeholder="Email Address" required />
+                <div class="w-full h-[1px] bg-white"></div>
+            </div>
+            <div>
+                <input class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" type="text" id="phone" name="Phone" placeholder="Phone" required />
+                <div class="w-full h-[1px] bg-white"></div>
+            </div>
+            <div>
+                <textarea class="w-full leading-[38px] outline-none text-white  bg-[#E7816B] bg-opacity-[0.0] ml-[13px] placeholder-white placeholder-opacity-50" placeholder="Your Message" name="Message" rows="3"></textarea>
+                <div class="w-full h-[1px] bg-white"></div>
+            </div>
+            <div class="flex justify-center items-center">
+                <button class="mt-[18px] md:mt-[19px] text-[15px] font-[500px] uppercase rounded-[8px] bg-white py-[18px] px-[48px] text-[##333136]">submit</button>
+            </div>
+        </form>
+    </div>
+
+
+</section>
+
+<section>
+    <div class="w-full md:w-[85%] md:mx-auto">
+
+        <div class="pt-[81px] pb-[100px] lg:grid lg:grid-cols-3 lg:gap-[178px]">
+            @foreach (var location in Model.Locations.Keys)
+            {
+                @await Html.PartialAsync("_Location", Model.Locations[location])
+            }
+        </div>
+    </div>
+</section>
