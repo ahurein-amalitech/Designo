@@ -65,8 +65,8 @@
             {
                 if (serviceKey != pageId)
                 {
-                    <div class="flex items-center justify-center h-[250px] md:h-[200px] lg:h-[308px] text-center rounded-[15px] text-white mb-[24px]" style="background-image: url('/assets/home/mobile/@Model.Services[serviceKey]["image"]'); background-repeat:no-repeat; background-size: cover">
-                        <div class="w-full">
+                    <div class="flex items-center justify-center h-[250px] md:h-[200px] lg:h-[308px] text-center rounded-[15px] overflow-hidden text-white mb-[24px]" style="background-image: url('/assets/home/mobile/@Model.Services[serviceKey]["image"]'); background-repeat:no-repeat; background-size: cover">
+                        <div class="w-full h-full flex justify-center  items-center  hover:bg-[#E7816B] hover:bg-opacity-[0.7]">
                             <a asp-page="/Services" asp-route-id="@Model.Services[serviceKey]["routeName"]">
                                 <h3 class="mb-[12px] leading-[36px] text-[28px] tracking-[1.4px]">@Model.Services[serviceKey]["name"]</h3>
                                 <p class="font-[500] text-[15px] uppercase tracking-[5px]">@Model.Services[serviceKey]["action"]<img src="~/assets/shared/desktop/icon-right-arrow.svg" class="ml-[5px] inline align-baseline" /></p>
